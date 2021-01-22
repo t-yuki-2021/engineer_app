@@ -16,3 +16,14 @@
     - いいね
     - コメント
     - リプライ
+
+# 環境情報
+
+## Python
+- Python 3.8.2
+
+## django
+- 3.1.5
+
+## DB
+- mysql  Ver 8.0.23 for osx10.15 on x86_64 (Homebrew)
