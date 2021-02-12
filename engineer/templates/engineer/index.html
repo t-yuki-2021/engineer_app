@@ -72,41 +72,15 @@
 
       <!-- 投稿一覧 -->
       <div class="container">
+        {% for item in data %}
         <div class="media border-bottom border-secondary mt-3">
           <img class="mr-3" src="{% static 'engineer/img/python.png' %}" alt="" style="max-width: 4rem;"> 
           <div class="media-body">
-            <h5>勉強内容</h5>
-            <p>ここに勉強内容のメモを記載します</p>
+            <h5>{{item.title}}</h5>
+            <p>{{item.memo}}</p>
           </div>
         </div>
-        <div class="media border-bottom border-secondary mt-3">
-          <img class="mr-3" src="{% static 'engineer/img/python.png' %}" alt="" style="max-width: 4rem;"> 
-          <div class="media-body">
-            <h5>勉強内容</h5>
-            <p>ここに勉強内容のメモを記載します</p>
-          </div>
-        </div>
-        <div class="media border-bottom border-secondary mt-3">
-          <img class="mr-3" src="{% static 'engineer/img/python.png' %}" alt="" style="max-width: 4rem;"> 
-          <div class="media-body">
-            <h5>勉強内容</h5>
-            <p>ここに勉強内容のメモを記載します</p>
-          </div>
-        </div>
-        <div class="media border-bottom border-secondary mt-3">
-          <img class="mr-3" src="{% static 'engineer/img/python.png' %}" alt="" style="max-width: 4rem;"> 
-          <div class="media-body">
-            <h5>勉強内容</h5>
-            <p>ここに勉強内容のメモを記載します</p>
-          </div>
-        </div>
-        <div class="media border-bottom border-secondary mt-3">
-          <img class="mr-3" src="{% static 'engineer/img/python.png' %}" alt="" style="max-width: 4rem;"> 
-          <div class="media-body">
-            <h5>勉強内容</h5>
-            <p>ここに勉強内容のメモを記載します</p>
-          </div>
-        </div>
+        {% endfor %}
       </div>
     </div>
     <!-- /#page-content-wrapper -->

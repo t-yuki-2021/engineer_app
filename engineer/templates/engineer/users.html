@@ -72,46 +72,18 @@
 
       <!-- 投稿一覧 -->
       <div class="container">
+        {% for item in data %}
         <div class="media border-bottom border-secondary mt-3">
           <img class="mr-3" src="{% static 'engineer/img/profile.jpeg' %}" alt="" style="max-width: 4rem;"> 
           <img class="mr-3" src="{% static 'engineer/img/python.png' %}" alt="" style="max-width: 4rem;"> 
           <div class="media-body">
-            <h5>経験年数</h5>
-            <p>1ヶ月</p>
+            <h5>言語</h5>
+            <p>{{item.language.name}}</p>
+            <h5>勉強開始日</h5>
+            <p>{{item.study_start_at}}</p>
           </div>
         </div>
-        <div class="media border-bottom border-secondary mt-3">
-          <img class="mr-3" src="{% static 'engineer/img/profile.jpeg' %}" alt="" style="max-width: 4rem;"> 
-          <img class="mr-3" src="{% static 'engineer/img/python.png' %}" alt="" style="max-width: 4rem;"> 
-          <div class="media-body">
-            <h5>経験年数</h5>
-            <p>1ヶ月</p>
-          </div>
-        </div>
-        <div class="media border-bottom border-secondary mt-3">
-          <img class="mr-3" src="{% static 'engineer/img/profile.jpeg' %}" alt="" style="max-width: 4rem;"> 
-          <img class="mr-3" src="{% static 'engineer/img/python.png' %}" alt="" style="max-width: 4rem;"> 
-          <div class="media-body">
-            <h5>経験年数</h5>
-            <p>1ヶ月</p>
-          </div>
-        </div>
-        <div class="media border-bottom border-secondary mt-3">
-          <img class="mr-3" src="{% static 'engineer/img/profile.jpeg' %}" alt="" style="max-width: 4rem;"> 
-          <img class="mr-3" src="{% static 'engineer/img/python.png' %}" alt="" style="max-width: 4rem;"> 
-          <div class="media-body">
-            <h5>経験年数</h5>
-            <p>1ヶ月</p>
-          </div>
-        </div>
-        <div class="media border-bottom border-secondary mt-3">
-          <img class="mr-3" src="{% static 'engineer/img/profile.jpeg' %}" alt="" style="max-width: 4rem;"> 
-          <img class="mr-3" src="{% static 'engineer/img/python.png' %}" alt="" style="max-width: 4rem;"> 
-          <div class="media-body">
-            <h5>経験年数</h5>
-            <p>1ヶ月</p>
-          </div>
-        </div>
+        {% endfor %}
       </div>
     </div>
     <!-- /#page-content-wrapper -->
