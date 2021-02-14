@@ -24,6 +24,7 @@ class Profile(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='profile_owner')
     language = models.ForeignKey(Language, on_delete=models.CASCADE, related_name='profile_language')
     study_start_at = models.DateField()
+    introduction = models.TextField(max_length=300, null=True)
 
     def __str__(self):
         return str(self.owner)

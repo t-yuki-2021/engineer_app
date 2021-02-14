@@ -1,7 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.contrib.auth.models import User
 from .models import (
-    StudyMemo, Profile
+    StudyMemo, Profile, Language
+)
+from .forms import(
+    ProfileForm
 )
 
 
@@ -18,3 +22,19 @@ def users(request):
         'data': data
     }
     return render(request, 'engineer/users.html', params)
+
+def set_profile(request):
+    if (request.method == 'POST'):
+        user = User.objects.first()
+        language = Language.objects.filter(id=request.POST['language']).first()
+        profile = Profile()
+        profile.owner = user
+        profile.language = language
+        profile.study_start_at = request.POST['study_start_at']
+        profile.introduction = request.POST['introduction']
+        profile.save()
+        return redirect(to='/engineer')
+    params = {
+        'form': ProfileForm()
+    }
+    return render(request, 'engineer/set_profile.html', params)
