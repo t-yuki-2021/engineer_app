@@ -38,3 +38,20 @@ def set_profile(request):
         'form': ProfileForm()
     }
     return render(request, 'engineer/set_profile.html', params)
+
+def edit_profile(request, num):
+    user = User.objects.get(id=num)
+    profile = Profile.objects.get(owner=user.id)
+    if (request.method == 'POST'):
+        language = Language.objects.filter(id=request.POST['language']).first()
+        profile.owner = user
+        profile.language = language
+        profile.study_start_at = request.POST['study_start_at']
+        profile.introduction = request.POST['introduction']
+        profile.save()
+        return redirect(to='/engineer')
+    params = {
+        'id': num,
+        'form': ProfileForm(instance=profile),
+    }
+    return render(request, 'engineer/edit_profile.html', params)
