@@ -1,3 +1,4 @@
+{% load widget_tweaks %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -58,33 +59,43 @@
       <div class="container">
         <div class="card mx-auto bg-light" style="max-width: 40rem; margin-top: 6rem;">
           <div class="card-header text-center ">勉強メモ</div>
-          <div class="card-body">
-            <div class="row">
-              <div class="input-group mb-2 col-9">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">教材　　</span>
+          <form action="#" method="post">
+            {% csrf_token %}
+            <div class="card-body">
+              <div class="row">
+                <div class="input-group mb-2 col-9">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">教材　　</span>
+                  </div>
+                  {{form.book|add_class:'form-control'}}
                 </div>
-                <input type="text" class="form-control">
+                <div class="col-3 text-right">
+                  <button type="button" class="btn btn-info">新規登録</button>
+                </div>
+  
               </div>
-              <div class="col-3 text-right">
-                <button type="button" class="btn btn-info">新規登録</button>
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">勉強時間</span>
+                </div>
+                {{form.time|add_class:'form-control'}}
               </div>
-
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">タイトル　　</span>
+                </div>
+                {{form.title|add_class:'form-control'}}
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">メモ　　</span>
+                </div>
+                {{form.memo|add_class:'form-control'}}
+              </div>
+              <button type="submit" class="btn btn-primary col-5" formaction="{% url 'register_study' id 1 %}">公開</button>
+              <button type="submit" class="btn btn-primary col-5" formaction="{% url 'register_study' id 0 %}">非公開</button>
             </div>
-            <div class="input-group mb-2">
-              <div class="input-group-prepend">
-                <span class="input-group-text">勉強時間</span>
-              </div>
-              <input type="text" class="form-control">
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">メモ　　</span>
-              </div>
-              <textarea class="form-control" cols="30" rows="6"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary btn-block">送信</button>
-          </div>
+          </form>
         </div>
 
       </div>
