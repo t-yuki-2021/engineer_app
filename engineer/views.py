@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.db.models import Sum
 from django.contrib.auth.models import User
 from .models import (
     StudyMemo, Profile, Language, Book
@@ -95,3 +96,16 @@ def register_study(request, num, is_public):
     memo = models.TextField(max_length=140)
     time = models.IntegerField(default=30)
     is_public = models.BooleanField(default=False)
+
+def my_page(request):
+    user = User.objects.first()
+    profile = Profile.objects.filter(owner=user.id).first()
+    cost = Book.objects.filter(owner=user.id).aggregate(Sum('price')),
+    data = {
+        'name': user.username,
+        'language': profile.language,
+        'start_at': profile.study_start_at,
+        'cost': cost[0]['price__sum'],
+        'histories': StudyMemo.objects.filter(owner=user.id).all()
+    }
+    return render(request, 'engineer/my_page.html', data)
