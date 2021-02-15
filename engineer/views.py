@@ -24,6 +24,20 @@ def users(request):
     }
     return render(request, 'engineer/users.html', params)
 
+def get_user(request, num):
+    user = User.objects.first()
+    profile = Profile.objects.filter(owner=user.id).first()
+    cost = Book.objects.filter(owner=user.id).aggregate(Sum('price')),
+    data = {
+        'id': num,
+        'name': user.username,
+        'language': profile.language,
+        'start_at': profile.study_start_at,
+        'cost': cost[0]['price__sum'],
+        'histories': StudyMemo.objects.filter(owner=user.id, is_public=True).all()
+    }
+    return render(request, 'engineer/user.html', data)
+
 def set_profile(request):
     if (request.method == 'POST'):
         user = User.objects.first()
