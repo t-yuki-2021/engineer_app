@@ -4,6 +4,7 @@ from .import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('users', views.users, name='users'),
+    path('user/<int:num>', views.get_user, name='get_user'),
     path('set_profile', views.set_profile, name='set_profile'),
     path('edit_profile/<int:num>', views.edit_profile, name='edit_profile'),
     path('register_book', views.register_book, name='register_book'),
